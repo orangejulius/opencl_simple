@@ -1,5 +1,5 @@
 simple:
-	gcc -o simple -std=c99 -lOpenCL -I/usr/include/OpenCL simple.c
+	gcc -Wall -o simple -std=c99 -lOpenCL -I/usr/include/OpenCL simple.c
 
 clean:
 	rm simple
