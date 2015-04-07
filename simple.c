@@ -39,8 +39,12 @@ int main() {
    /* Access a device */
    err = clGetDeviceIDs(platform, CL_DEVICE_TYPE_GPU, 1, &device, NULL);
    if(err < 0) {
-      perror("Couldn't find any devices");
-      exit(1);
+	   printf("Couldn't find any GPU devices, using CPU\n");
+	   err = clGetDeviceIDs(platform, CL_DEVICE_TYPE_CPU, 1, &device, NULL);
+	   if (err < 0) {
+		   printf("Couldn't find any CPU devices either\n");
+		   exit(1);
+	   }
    }
 
    /* Create the context */
